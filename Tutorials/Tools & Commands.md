@@ -42,3 +42,5 @@ go run
 ```
 
 ဆိုတာနဲ့ run လို့ ရနိုင်ပါတယ်။ 
+
+Next - [Start with Helloworld](Helloworld.md)
