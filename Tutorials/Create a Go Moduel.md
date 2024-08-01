@@ -26,9 +26,52 @@ Sprintf ဆိုတာ %v ကို substitute လုပ်ပြီး print �
 
 ```
 + tutorial (folder)
-   |-- greetings/
+   |-- greetings/                 <-- example.com/greetings
    |-- hello/
 ```
 
+greeting package ကို ဒီလိုမျိုး build  ပါမယ်။ => go mod init example.com/greetings
+
 အဲ့ဒီ greeting ကို အခြား helloworld ဆိုတဲ့ ဖိုင်ကနေ ပြန်ခေါ်သုံးချင်တယ်ဆိုပါတော့။ 
+
+```
+    import (
+         "golang.org/x/net/html" <--- External package referenced by URL
+         "fmt"
+         "net/http"
+    )
+
+```
+
+Complete code be like 
+```
+package main
+
+import (
+    "fmt"
+    "example.com/greetings"
+)
+
+func main() {
+    // Get a greeting message and print it.
+    message := greetings.Hello("Gladys")
+    fmt.Println(message)
+}
+```
+
+
+
+
+အဲ့မတိုင်ခင် hello folder အောက်မှာ ဒီဟာကို run ပေးဖို့လို့ပါတယ်။ 
+=> go mod init example.com/hello
+=> go mod edit -replace example.com/greetings=../greetings
+
+အခြား publich package ကို ယူသုံးရင်တော့ go get ဆိုပြီး download ဆွဲလိုက်ရင် ရတယ် အခု ကျွန်တော်တို့က local package ကိုဘဲ link မှာဆိုတော့ လိုအပ်တာကို replace လုပ်ပေးလိုက်ရင် ရပါတယ်။
+
+ပြီးသွားရင် => go mod tidy ဆိုတာ run ပေးလိုက်ပါ။ 
+
+နောက်ဆုံး output ကို ကြည့်ချင်တယ်ဆို 
+=> go run . [or] go run .\hello.go
+
+
 
